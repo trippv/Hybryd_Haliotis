@@ -1,0 +1,12 @@
+```bash
+EXPORT=/LUSTRE/apps/bioinformatica/stringtie/
+export PATH=$PATH:$EXPORT
+
+EXPORT=/LUSTRE/apps/bioinformatica/hisat2/
+export PATH=$PATH:$EXPORT
+
+EXPORT=/LUSTRE/apps/bioinformatica/diamond_v2.1.8/
+export PATH=$PATH:$EXPORT
+
+
+```
