@@ -1,0 +1,11 @@
+Sample	Bowtie 2 / HiSAT2_mqc-generalstats-bowtie_2_hisat2-overall_alignment_rate
+CFF1	90.92
+CFF2	91.43
+CFF3	91.11
+CRF2	89.66
+CRF3	88.67
+CRR1	86.92
+CRR2	84.62
+CRR3	86.85
+HCFF3	0.01
+HCRR1	0.01

@@ -1,0 +1,15 @@
+# BUSCO version is: 3.0.2 
+# The lineage dataset is: bacteria_odb10 (Creation date: 2024-01-08, number of species: 4085, number of BUSCOs: 124)
+# To reproduce this run: python /home/rgomez/bin/busco-master/scripts/run_BUSCO.py -i transcripts.fa -o transcripts_bacteria_odb10 -l /LUSTRE/bioinformatica_data/genomica_funcional/rgomez/BUSCOdb/bacteria_odb10/ -m transcriptome -c 20
+#
+# Summarized benchmarking in BUSCO notation for file transcripts.fa
+# BUSCO was run in mode: transcriptome
+
+	C:7.2%[S:1.6%,D:5.6%],F:3.2%,M:89.6%,n:124
+
+	9	Complete BUSCOs (C)
+	2	Complete and single-copy BUSCOs (S)
+	7	Complete and duplicated BUSCOs (D)
+	4	Fragmented BUSCOs (F)
+	111	Missing BUSCOs (M)
+	124	Total BUSCO groups searched

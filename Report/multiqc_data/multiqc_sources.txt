@@ -1,0 +1,11 @@
+Module	Section	Sample Name	Source
+Bowtie 2 / HiSAT2	all_sections	HCRR1	/Users/cigom/Documents/GitHub/Hybryd_Haliotis/Report/HCRR1.summary.txt
+Bowtie 2 / HiSAT2	all_sections	CFF3	/Users/cigom/Documents/GitHub/Hybryd_Haliotis/Report/CFF3.summary.txt
+Bowtie 2 / HiSAT2	all_sections	CRR2	/Users/cigom/Documents/GitHub/Hybryd_Haliotis/Report/CRR2.summary.txt
+Bowtie 2 / HiSAT2	all_sections	CRR1	/Users/cigom/Documents/GitHub/Hybryd_Haliotis/Report/CRR1.summary.txt
+Bowtie 2 / HiSAT2	all_sections	HCFF3	/Users/cigom/Documents/GitHub/Hybryd_Haliotis/Report/HCFF3.summary.txt
+Bowtie 2 / HiSAT2	all_sections	CRF2	/Users/cigom/Documents/GitHub/Hybryd_Haliotis/Report/CRF2.summary.txt
+Bowtie 2 / HiSAT2	all_sections	CRR3	/Users/cigom/Documents/GitHub/Hybryd_Haliotis/Report/CRR3.summary.txt
+Bowtie 2 / HiSAT2	all_sections	CFF2	/Users/cigom/Documents/GitHub/Hybryd_Haliotis/Report/CFF2.summary.txt
+Bowtie 2 / HiSAT2	all_sections	CRF3	/Users/cigom/Documents/GitHub/Hybryd_Haliotis/Report/CRF3.summary.txt
+Bowtie 2 / HiSAT2	all_sections	CFF1	/Users/cigom/Documents/GitHub/Hybryd_Haliotis/Report/CFF1.summary.txt

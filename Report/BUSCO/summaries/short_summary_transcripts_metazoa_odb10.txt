@@ -1,0 +1,15 @@
+# BUSCO version is: 3.0.2 
+# The lineage dataset is: metazoa_odb10 (Creation date: 2024-01-08, number of species: 65, number of BUSCOs: 954)
+# To reproduce this run: python /home/rgomez/bin/busco-master/scripts/run_BUSCO.py -i transcripts.fa -o transcripts_metazoa_odb10 -l /LUSTRE/bioinformatica_data/genomica_funcional/rgomez/BUSCOdb/metazoa_odb10/ -m transcriptome -c 20
+#
+# Summarized benchmarking in BUSCO notation for file transcripts.fa
+# BUSCO was run in mode: transcriptome
+
+	C:90.8%[S:19.7%,D:71.1%],F:1.4%,M:7.8%,n:954
+
+	866	Complete BUSCOs (C)
+	188	Complete and single-copy BUSCOs (S)
+	678	Complete and duplicated BUSCOs (D)
+	13	Fragmented BUSCOs (F)
+	75	Missing BUSCOs (M)
+	954	Total BUSCO groups searched
