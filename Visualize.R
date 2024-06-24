@@ -1,12 +1,12 @@
 library(tidyverse, help, pos = 2, lib.loc = NULL)
 
-dir <- "/Users/cigom/Documents/Github/"
+dir <- "/Users/cigom/Documents/GitHub/Hybryd_Haliotis/Report"
 
 # f1 <- list.files(dir, pattern = "02.Assembly-alignment.tsv",  full.names = T)
-f2 <- list.files(dir, pattern = "02.Assembly-BUSCO.tsv", full.names = T)
+f2 <- list.files(dir, pattern = "BUSCO.tsv", full.names = T)
 
 df2 <- read_tsv(f2) %>%
-  mutate(my_species = gsub("_odb10", "", my_species)) %>%
+  mutate(my_species = gsub("transcripts_", "", my_species)) %>%
   mutate(my_species = stringr::str_to_title(my_species)) %>%
   mutate(Method = stringr::str_to_title(Method))
 
@@ -26,10 +26,10 @@ col <- structure(col, names = rev(names))
 figure <- df2 %>%
   filter(my_species != "Bacteria") %>%
   mutate(category = factor(category, levels = rev(names))) %>%
-  ggplot(aes(x = my_species, y = my_percentage, fill = category)) +
-  facet_grid(~Method) +
+  ggplot(aes(x = Method, y = my_percentage, fill = category, group = Method)) +
+  facet_grid(my_species ~ ., scales = "free") +
   geom_col(position = position_stack(reverse = TRUE), width = 0.75) +
-  scale_y_continuous(labels = scales::percent_format(scale = 100)) +
+  scale_y_continuous(labels = scales::percent_format(scale = 1)) +
   labs(y = "% BUSCOs", x = "", caption = "Transcriptome assembly") +
   coord_flip() +
   scale_fill_manual("", values = col, labels = rev(labels)) +
