@@ -11,9 +11,13 @@ export LD_LIBRARY_PATH=/LUSTRE/apps/bioinformatica/ruby2/ruby-2.2.0/lib:$LD_LIBR
 
 transrate --assembly denovo-transcript.fa --threads 10
 transrate --assembly refbased-transcript.fa --threads 10
+transrate --assembly rnaspades.fasta --threads 10
+transrate --assembly Trinity.fasta --threads 10
+
 ```
 
 Busco
+
 ```bash
 /LUSTRE/bioinformatica_data/genomica_funcional/rgomez/Haliotis/03.Merges/REFBASED_MODE/BUSCO
 mkdir summaries
