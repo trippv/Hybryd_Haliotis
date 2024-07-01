@@ -5,6 +5,11 @@ dir <- "/Users/cigom/Documents/GitHub/Hybryd_Haliotis/Report"
 f1 <- list.files(dir, pattern = "02.Assembly-alignment.tsv",  full.names = T)
 f2 <- list.files(dir, pattern = "BUSCO.tsv", full.names = T)
 
+# /Users/cigom/Documents/GitHub/Hybryd_Haliotis/Report/03.quantification
+
+f3 <- list.files(dir, pattern = "FeatureCount", full.names = T) 
+
+
 cols <- read_tsv(f1) %>%  select(starts_with("PE")) %>% names()
 
 df1 <- read_tsv(f1) %>% select(-Treads, -`% Alignment`)
@@ -108,20 +113,31 @@ cols <- read_tsv(f0) %>%  select(!starts_with("Metric")) %>% names()
 
 df0 <- read_tsv(f0)
 
+n_seqs <- c(76658,74226,766989,398352)
+n_orfs <- c(56684,55862,92573,81604)
+
+df0 <- rbind(df0, c("orfs", as.numeric(n_orfs/n_seqs)))
+
 df0 <- df0 %>% 
   pivot_longer(cols = all_of(cols), names_to = "Method", values_to =  "Value") %>%
   mutate(Method = stringr::str_to_title(Method)) %>%
   filter(Method != "Denovo") %>%
-  mutate(Method = factor(Method, levels = c("Trinity", "Rnaspades", "Reference-Guide")))
+  mutate(Method = factor(Method, levels = c("Trinity", "Rnaspades", "Reference-Guide"))) %>%
+  mutate(Value = as.numeric(Value))
+
+which_metrics <- c("n seqs", "n90","n50", "largest","orfs")
 
 df0 %>%
-  filter(Metric %in% c("n50", "largest", "n with orf")) %>%
-  mutate(Metric = factor(Metric, levels = c("n50", "largest", "n with orf"))) %>%
+  # mutate(facet = "Contig Metrics") %>%
+  filter(Metric %in% which_metrics) %>%
+  mutate(Metric = factor(Metric, levels = which_metrics)) %>%
   ggplot(aes(x = Method, y = Value, group = Method)) +
-  geom_col(position = position_stack(reverse = TRUE), width = 0.75)+
-  facet_grid(Metric ~., scales = "free", space = "free") +
+  geom_col(position = position_stack(reverse = TRUE), width = 0.75) +
+  # ggh4x::facet_grid2(Metric ~., scales = "free_y") +
+  # facet_grid(Metric ~., scales = "free_y") +
+  facet_wrap(Metric ~ ., ncol = 1, scales = "free") +
   coord_flip() +
-  scale_fill_manual("", values = col, labels = rev(labels)) +
+  # scale_fill_manual("", values = col, labels = rev(labels)) +
   guides(fill=guide_legend(nrow = 4)) +
   theme_bw(base_size = 12, base_family = "GillSans") +
   theme(legend.position = "bottom", 
@@ -129,9 +145,28 @@ df0 %>%
     axis.line.x = element_blank(),
     axis.line.y = element_blank()) -> p0
 
+p0
 
-ggsave(p0, filename = 'metrics-methods.png', path = dir, width = 5, height = 3, device = png, dpi = 300)
+ggsave(p0, filename = 'metrics-methods.png', path = dir, width = 3.5, height = 6, device = png, dpi = 300)
 
+
+
+df0 %>%
+  filter(Metric %in% c("n under 200")) %>%
+  # mutate(Metric = factor(Metric, levels = which_metrics)) %>%
+  ggplot(aes(x = Method, y = Value, group = Method)) +
+  geom_col(position = position_stack(reverse = TRUE), width = 0.75) +
+  # ggh4x::facet_grid2(Metric ~., scales = "free_y") +
+  # facet_grid(Metric ~., scales = "free_y") +
+  facet_wrap(Metric ~ ., ncol = 1, scales = "free") +
+  coord_flip() +
+  # scale_fill_manual("", values = col, labels = rev(labels)) +
+  guides(fill=guide_legend(nrow = 4)) +
+  theme_bw(base_size = 12, base_family = "GillSans") +
+  theme(legend.position = "bottom", 
+    strip.background = element_rect(fill = 'grey89', color = 'white'),
+    axis.line.x = element_blank(),
+    axis.line.y = element_blank())
 
 for(i in rev(c(1:length(levels(my_species))))){
     detailed_values <- my_values[my_species==my_species[my_species==levels(my_species)[i]]]
