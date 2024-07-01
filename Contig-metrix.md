@@ -36,3 +36,34 @@ Rscript summaries/busco_figure.R
 # firefox summaries/busco_figure.png
 cp summaries/busco_figure.R .
 ```
+
+## gffcompare
+Gffcompare can be used to evaluate and compare the accuracy of transcript assemblers - in terms of their structural correctness (exon/intron coordinates). 
+
+In order to compare the baseline de novo transcript assembly accuracy, for instance, both different assemblers, should be run without using any reference annotation data (i.e. no -G or -g options were used).
+
+
+```bash
+ EXPORT=/LUSTRE/bioinformatica_data/genomica_funcional/apps/gffcompare
+export PATH=$PATH:$EXPORT
+
+cd /LUSTRE/bioinformatica_data/genomica_funcional/rgomez/Haliotis/03.Merges/REFBASED_MODE
+
+# gffcompare -r hybrid.gtf -i stringtie_gtf_list.txt
+
+gffcompare -r hybrid.gtf transcripts.gtf
+
+cd /LUSTRE/bioinformatica_data/genomica_funcional/rgomez/Haliotis/03.Merges/DENOVO_MODE/
+
+gffcompare -r hybrid.gtf transcripts.gtf
+
+
+
+cd /LUSTRE/bioinformatica_data/genomica_funcional/rgomez/Haliotis/Contig-metrics/rnaspades-hisat-alignment/HISAT2_SAM_BAM_FILES
+
+gffcompare -r hybrid.gtf transcripts.gtf
+# resulted in zero cause hybrid.gtf does not match to ids from transcripts.gtf
+
+# The measures of “sensitivity” and “precision” are calculated at various levels (nucleotide, exon, intron, transcript, gene) for each input file and reported in this .stats file.
+
+```
