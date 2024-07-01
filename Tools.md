@@ -24,4 +24,7 @@ GFFREAD=/LUSTRE/bioinformatica_data/genomica_funcional/apps/gffread
 EXPORT=/LUSTRE/bioinformatica_data/genomica_funcional/apps/gffread
 export PATH=$PATH:$EXPORT
 
+EXPORT=/LUSTRE/bioinformatica_data/genomica_funcional/apps/gffcompare
+export PATH=$PATH:$EXPORT
+
 ```
