@@ -1,3 +1,9 @@
+
+
+rm(list = ls())
+
+if(!is.null(dev.list())) dev.off()
+
 library(tidyverse, help, pos = 2, lib.loc = NULL)
 
 dir <- "/Users/cigom/Documents/GitHub/Hybryd_Haliotis/Report"
@@ -5,9 +11,6 @@ dir <- "/Users/cigom/Documents/GitHub/Hybryd_Haliotis/Report"
 f1 <- list.files(dir, pattern = "02.Assembly-alignment.tsv",  full.names = T)
 f2 <- list.files(dir, pattern = "BUSCO.tsv", full.names = T)
 
-# /Users/cigom/Documents/GitHub/Hybryd_Haliotis/Report/03.quantification
-
-f3 <- list.files(dir, pattern = "FeatureCount", full.names = T) 
 
 
 cols <- read_tsv(f1) %>%  select(starts_with("PE")) %>% names()
