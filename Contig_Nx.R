@@ -35,16 +35,21 @@ metrics_df <- function(f) {
   
   width <- contig_Nx(f)
   
+  n_seqs <- length(width)
+  
   v <- seq(0.1,1, by = 0.1)
   
   Lx <- function(x) { sum(cumsum(width) < (sum(width) * x)) + 1 }
   
-  Lx <- function(x) { sum(cumsum(width) < (sum(width) * x)) + 1 }
+  # add the number of sequences per Nx (field n_seqs)
+  
+  # Lx <- function(x) { sum(cumsum(width) < (sum(width) * x)) + 1 }
   
   l <- unlist( lapply(v, Lx))
   
-  metrics_df <- data.frame(x = paste0("N", v*100), n = width[l], l = l, 
-    Assembly = basename(f))
+  metrics_df <- data.frame(x = paste0("N", v*100), n = width[l], l = l,
+    n_seqs = n_seqs-l, Assembly = basename(f))
+
   
   return(metrics_df)
   
